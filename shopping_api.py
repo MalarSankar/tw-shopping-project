@@ -42,8 +42,27 @@ def fetch_items(category_id):
         formated_item_list.append("name:"+str(row[0])+"  "+"price:"+str(row[1])+"  "+"seller name:"+str(row[2])+"  "+"seller phone_no:"+str(row[3]))
     return jsonify(formated_item_list)
 
+@app.route('/cart/add',methods=['POST'])
+def add_cart():
+    user_id=request.form['user_id']
+    item=request.form['item']
+    db.execute("insert into carts(user_cart_id,item) values({},'{}');".format(user_id,item))
+    return "Item added successfully "
 
 
+@app.route('/cart/delete',methods=['DELETE'])
+def delete_item():
+    user_id = request.form['user_id']
+    item = request.form['item']
+    db.execute("delete from carts where user_cart_id={} and item='{}';".format(user_id, item))
+    return "Item deleted successfully"
+
+@app.route('/view cart',methods=['GET'])
+def fetch_cart_items():
+    user_id = request.form['user_id']
+    cart_items=db.execute("select item from carts where user_cart_id={} ;".format(user_id))
+    item=[str(row.item) for row in cart_items]
+    return jsonify(item)
 db=connect_db()
 if __name__ == "__main__":
     app.run()
