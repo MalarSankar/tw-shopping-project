@@ -12,6 +12,20 @@ def connect_db():
 def home_page():
     return "WELCOME  TO   ONLINE   SHOPPING",200
 
+@app.route('/login',methods=['POST'])
+def login():
+    user_name=request.form['user_name']
+    password=request.form['password']
+    usernames = db.execute("select name from users;")
+    usernames = [str(row[0]) for row in usernames]
+    passwords = db.execute("select password from users;")
+    passwords = [str(row[0]) for row in passwords]
+    result=dict(zip(usernames,passwords))
+    if user_name in result and password==result[user_name]:
+        return jsonify('authorized user'),200
+    else:
+        return jsonify("unauthorized"),401
+
 @app.route('/categories',methods=['GET'])
 def fetch_categories():
     category_list = db.execute("select * from categories")
