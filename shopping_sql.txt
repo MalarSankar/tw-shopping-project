@@ -1,0 +1,30 @@
+create table users(
+		id serial primary key,
+		name text not null,
+		password varchar(10) unique not null);
+
+create table categories(
+		id serial primary key,
+		name text not null);
+
+
+create table items(
+		id serial primary key,
+		name text not null,
+		price numeric not null,
+		seller_id numeric not null,
+		category_id numeric not null);
+
+create table sellers(
+		id serial primary key,
+		name text not null,
+		phone_no numeric unique not null);
+
+create table cart_id_holders(
+			user_id numeric unique not null
+			cart_id numeric unique not null);
+
+create table carts(
+		id numeric primary key,
+		items text not null);
+
