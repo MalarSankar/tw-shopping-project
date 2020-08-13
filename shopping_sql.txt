@@ -26,5 +26,7 @@ create table cart_id_holders(
 
 create table carts(
 		id numeric primary key,
-		items text not null);
+		user_cart_id numeric not null,
+		item_id numeric not null,
+		quantity numeric);
 
