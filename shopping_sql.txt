@@ -20,13 +20,10 @@ create table sellers(
 		name text not null,
 		phone_no numeric unique not null);
 
-create table cart_id_holders(
-			user_id numeric unique not null
-			cart_id numeric unique not null);
 
 create table carts(
-		id numeric primary key,
-		user_cart_id numeric not null,
+		id serial primary key,
+		user_id numeric not null,
 		item_id numeric not null,
 		quantity numeric);
 
