@@ -1,9 +1,10 @@
-import database
+from database import connect_db
 from flask import Flask,request,jsonify,session
 from flask import Blueprint
+from tables import User
+session=connect_db()
 
 login_blueprint=Blueprint('login_blueprint',__name__)
-
 @login_blueprint.route('/',methods=['GET'])
 def home_page():
     return "WELCOME  TO   ONLINE   SHOPPING",200
@@ -13,14 +14,11 @@ def login():
     user_name=request.form['user_name']
     password=request.form['password']
     try:
-        user_info=db.execute("select id from users where name='{}' and password='{}';".format(user_name,password))
-        user_info = [str(row[0]) for row in user_info]
-        if len(user_info) == 1:
+        user_info=session.query(User.id).filter_by(name=user_name,password=password).first()
+        if user_info:
             session['user']=user_name
-            return jsonify("authorized user"), 200
-    
-        return jsonify("unauthorized user"), 401
+            return "authorized user",200
+        return "unauthorized user",401
     except Exception as e:
         return (str(e))
 
-db= database.connect_db()
