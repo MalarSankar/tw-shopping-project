@@ -1,0 +1,6 @@
+Flask==1.1.2
+SQLAlchemy==1.3.18
+PyJWT==1.7.1
+Flask-SQLAlchemy==2.44
+Pscopg2==2.85
+Werkzeug==1.0.1
