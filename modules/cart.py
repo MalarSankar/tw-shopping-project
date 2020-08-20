@@ -1,7 +1,7 @@
 from database import connect_db
 from flask import Flask,request,jsonify,session
 from flask import Blueprint
-from tables import Cart,Item
+from models import Cart,Item
 session=connect_db()
 
 cart_blueprint=Blueprint('cart_blueprint',__name__)

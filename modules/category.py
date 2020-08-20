@@ -1,7 +1,7 @@
 from database import connect_db
 from flask import Flask,request,jsonify,session
 from flask import Blueprint
-from tables import Category,Item,Seller
+from models import Category,Item,Seller
 session=connect_db()
 
 

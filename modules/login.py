@@ -1,7 +1,7 @@
 from database import connect_db
 from flask import Flask,request,jsonify,session
 from flask import Blueprint
-from tables import User
+from models import User
 session=connect_db()
 
 login_blueprint=Blueprint('login_blueprint',__name__)
