@@ -1,0 +1,7 @@
+1.Login -POST -http://localhost:8000/login
+2.to view categories-GET-http://localhost:8000/categories
+3.to view items- GET-  http://localhost:8000/categories/<category_id>
+4.add item -POST- http://localhost:8000/cart
+5.update - PUT- http://localhost:8000/cart
+6.delete-  DELETE- http://localhost:8000/cart
+7.View cart  -GET  -http://localhost:8000/cart
