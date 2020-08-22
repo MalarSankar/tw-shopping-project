@@ -5,10 +5,10 @@ from models import User
 import jwt
 import datetime
 from functools import wraps
+import os
 session=connect_db()
 
 login_blueprint=Blueprint('login_blueprint',__name__)
-
 def token_required(f):
     @wraps(f)
     def decorated(*args,**kwargs):
@@ -16,7 +16,7 @@ def token_required(f):
         if not token:
             return jsonify({'message':'token missing'}),403
         try:
-            data = jwt.decode(token,'flask project')
+            data = jwt.decode(token,os.environ.get('SECRET_KEY'))
         except:
             return jsonify({'message': 'token is invalid'}), 403
         return f(*args, **kwargs)
@@ -33,7 +33,7 @@ def login():
     try:
         user_info=session.query(User.id).filter_by(name=user_name,password=password).first()
         if user_info:
-            token = jwt.encode({'user': user_name, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=5)},'flask project')
+            token = jwt.encode({'user': user_name, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=5)},os.environ.get('SECRET_KEY'))
             return jsonify({'token': token.decode('UTF-8')})
         return make_response('could not verify', 401, {'WWW-Authentication': 'Basic realm "login required"'})
     except Exception as e:

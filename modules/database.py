@@ -1,8 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+import os
 
 def connect_db():
-    connection_string="postgresql://postgres:7538821247@localhost:5432/shopping"
+    connection_string=os.environ.get('DATABASE_URL')
     db= create_engine(connection_string)
     Session=sessionmaker(bind=db)
     session=Session()
