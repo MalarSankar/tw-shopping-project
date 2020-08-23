@@ -1,7 +1,38 @@
-1.Login -POST -http://localhost:8000/login
-2.to view categories-GET-http://localhost:8000/categories
-3.to view items- GET-  http://localhost:8000/categories/<category_id>
-4.add item -POST- http://localhost:8000/cart
-5.update - PUT- http://localhost:8000/cart
-6.delete-  DELETE- http://localhost:8000/cart
-7.View cart  -GET  -http://localhost:8000/cart
+Project Name: Market Place
+
+Project Overview:It is a web application.It enables the users or customers to buy goods through online.
+
+Clone my project: git clone 
+
+     1.Python editor
+     2.installation command for cmd:pip install flask.
+     3.install all the packages mentioned in requirements.txt
+       command for cmd:pip install package name
+
+   
+    List of files:
+                                                                          Resource Api                     	 		method                    
+    1.database.py  	#Database connection
+    2.login.py     	#For User login                                  http://localhost:8000/login           			POST                                  
+    3.categories.py     #To display categories                           http://localhost:8000/categories      			GET
+    4.categories.py   	#To get item details                             http://localhost:8000/categories/<category_id>         GET
+    5.carts.py     	#Add to cart                                     http://localhost:8000/cart            			POST
+                   	#update quantity in cart                         http://localhost:8000/cart            			PUT
+                   	#Delete item from cart                           http://localhost:8000/cart            			DELETE
+                   	#View items                                      http://localhost:8000//cart            		GET
+     6.main.py      	#To run all the files
+
+
+    Database Configuration:
+
+    
+    server:localhost  http://localhost:8000/
+    Server :localhost
+    Database :shopping
+    Port :5432
+    Username :postgres
+    Password for user postgres:7538821247
+    Run description: run main.py
+
+    
+    
