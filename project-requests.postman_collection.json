@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "0c08ac5b-96cd-44a8-b587-430a9c974ded",
+		"name": "project-requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8000/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_name",
+							"value": "madhan",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "9003388828",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"login"
+					]
+				},
+				"description": "home page"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_name",
+							"value": "madhan",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "9003388828",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"login"
+					]
+				},
+				"description": "login"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/categories",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_name",
+							"value": "madhan",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "9003388828",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/categories?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWFkaGFuIiwiZXhwIjoxNTk4MjQxNzkyfQ.o7JTnMvqLaI4pCsTmRdq_TOZkdz0eHMDNTdQdRxPktc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"categories"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWFkaGFuIiwiZXhwIjoxNTk4MjQxNzkyfQ.o7JTnMvqLaI4pCsTmRdq_TOZkdz0eHMDNTdQdRxPktc"
+						}
+					]
+				},
+				"description": "categoris list"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/categories/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_name",
+							"value": "madhan",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "9003388828",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/categories/1?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWFkaGFuIiwiZXhwIjoxNTk4MjQxNzkyfQ.o7JTnMvqLaI4pCsTmRdq_TOZkdz0eHMDNTdQdRxPktc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"categories",
+						"1"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWFkaGFuIiwiZXhwIjoxNTk4MjQxNzkyfQ.o7JTnMvqLaI4pCsTmRdq_TOZkdz0eHMDNTdQdRxPktc"
+						}
+					]
+				},
+				"description": "particular category list"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "item_id",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/cart?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWFsYXIiLCJleHAiOjE1OTgyNDIyMTJ9.KOMP_WkAmLkZVPALtYJ5-OQ7XrVkZ3n213cDTznadFA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"cart"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWFsYXIiLCJleHAiOjE1OTgyNDIyMTJ9.KOMP_WkAmLkZVPALtYJ5-OQ7XrVkZ3n213cDTznadFA"
+						}
+					]
+				},
+				"description": "to add item in cart"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/cart",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "item_id",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/cart?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWFsYXIiLCJleHAiOjE1OTgyNDIyMTJ9.KOMP_WkAmLkZVPALtYJ5-OQ7XrVkZ3n213cDTznadFA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"cart"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWFsYXIiLCJleHAiOjE1OTgyNDIyMTJ9.KOMP_WkAmLkZVPALtYJ5-OQ7XrVkZ3n213cDTznadFA"
+						}
+					]
+				},
+				"description": "update quantity"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/cart",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "item_id",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/cart?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWFsYXIiLCJleHAiOjE1OTgyNDIyMTJ9.KOMP_WkAmLkZVPALtYJ5-OQ7XrVkZ3n213cDTznadFA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"cart"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWFsYXIiLCJleHAiOjE1OTgyNDIyMTJ9.KOMP_WkAmLkZVPALtYJ5-OQ7XrVkZ3n213cDTznadFA"
+						}
+					]
+				},
+				"description": "delete item"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/cart",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/cart?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWFsYXIiLCJleHAiOjE1OTgyNDIyMTJ9.KOMP_WkAmLkZVPALtYJ5-OQ7XrVkZ3n213cDTznadFA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"cart"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibWFsYXIiLCJleHAiOjE1OTgyNDIyMTJ9.KOMP_WkAmLkZVPALtYJ5-OQ7XrVkZ3n213cDTznadFA"
+						}
+					]
+				},
+				"description": "view cart"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
