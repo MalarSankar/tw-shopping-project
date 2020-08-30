@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/login.css')}}">
+    <script>
+    $('submit').click(function(){
+        var user_name=$('#username').val().trim();
+        var password=$('#password').val().trim();
+        $.ajax({
+            url:'http://localhost:8000/login',
+            data:{user_name:user_name,password:password},
+            type:'POST',
+            success:function(response){
+
+            },
+            error:function(error){
+                console.log(error);
+            }
+           });
+        });
+
+    </script>
+</head>
+<body style="background-color:red;">
+    <header>
+        <nav>
+            <a  href="http://localhost:8000/">Home</a>
+            <a href="http://localhost:8000/">Logout</a>
+        </nav>
+    </header>
+    <p id="demo"></p>
+
+    <div class="loginbox">
+        <h1>Login Here</h1>
+        <form action="" method="POST" role="form">
+            <P>Username</P>
+            <input type="text" id="username" name="username" placeholder="Enter Username">
+            <p>Password</p>
+            <input type="password" id="password" name="password" placeholder="Enter Password">
+            <input type="submit" value="login">
+        </form>
+    </div>
+
+
+</body>
+
+</html>

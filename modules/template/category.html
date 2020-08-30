@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>category</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/category.css')}}">
+
+</head>
+<body>
+ <header>
+        <nav>
+            <a href="http://localhost:8000/cart1">cart</a>
+             <a href="http://localhost:8000/">logout</a>
+
+        </nav>
+    </header>
+<div>
+    <ul id="cat" class="catclass"  style="font-size:30px;"></ul>
+</div>
+<div >
+    <ol id="item" class="itemclass"></ol>
+</div>
+<div id="pitem"></div>
+<script>
+    localStorage.setItem("userid",{{a}})
+
+    fetch("http://localhost:8000/categories")
+        .then(response => response.json())
+        .then(json =>{
+            let ul='<ul>';
+            json.forEach(category =>{
+                var category_id=category.id;
+                ul+='<br><li id="'+category_id+'">'+category.name+'</a>';
+            });
+            document.getElementById("cat").innerHTML=ul;
+        });
+        document.getElementsByTagName('ul')[0].addEventListener("click",function(ev){
+            fetch("http://localhost:8000/categories/"+ev.target.id)
+                .then(response => response.json())
+                .then(json =>{
+                    let ol='<ol>';
+                    json.forEach(item =>{
+
+                       ol+='<br><li id="'+item.id+'">'+item.name+'</a>';
+                    });
+                    document.getElementById("item").innerHTML=ol;
+                });
+                 document.getElementsByTagName('ol')[0].addEventListener("click",function(ev){
+                   fetch("http://localhost:8000/item/"+ev.target.id)
+                .then(response => response.json())
+                .then(json =>{
+                    let ul='<ul>';
+                    json.forEach(pitem =>{
+                        ul+='<br><li id="'+pitem.id+'">'+"price:"+pitem.price+" , "+"Sellername:"+pitem.sellername+" , "+"seller_no:"+pitem.seller_no+'</a>';
+                    });
+
+                });
+                document.addEventListener("click",function(e){
+                localStorage.setItem('itemid',e.target.id)
+                 document.location.href="http://localhost:8000/addcart"
+                });
+         });
+         });
+</script>
+</body>
+</html>

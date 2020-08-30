@@ -5,7 +5,7 @@ from cart import cart_blueprint
 from logout import logout_blueprint
 import os
 
-app=Flask(__name__)
+app=Flask(__name__,template_folder='template')
 
 app.config['DEBUG']=True
 app.config['SECRET KEY']=os.environ.get('SECRET_KEY')

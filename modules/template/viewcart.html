@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+     <link rel="stylesheet" href="{{url_for('static',filename='styles/viewcart.css')}}">
+</head>
+<body>
+    <header>
+        <nav>
+
+            <a href="http://localhost:8000/">logout</a>
+
+        </nav>
+    </header>
+
+    <ul id="cart"></ul>
+    <ol id="car"></ol>
+<script>
+var user=localStorage.getItem('userid');
+   $(document).ready(function(){
+
+        $.ajax({url:"http://localhost:8000/cart",
+               data:{user_id:user},
+               type:'POST',
+               success:function(data){
+               let ul='<ul>';
+               data.forEach(item=>{
+                var item_id=item.id;
+                 ul+='<br><li id="'+item_id+'">'+"Item:"+item.name+"  "+"quantity:"+item.quantity+'</a>';
+               });
+                document.getElementById("cart").innerHTML=ul;
+             }
+              });
+              $("#cart").click(function(e){
+                localStorage.setItem('ritemid',e.target.id)
+                 document.location.href="http://localhost:8000/modify"
+
+        });
+   });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/modifycart.css')}}">
+</head>
+<body>
+ <header>
+        <nav>
+
+            <a href="http://localhost:8000/cart1">cart</a>
+             <a href="http://localhost:8000/">logout</a>
+
+        </nav>
+    </header>
+ <button  class="btn" type="button" onclick="removecart()" >Remove</button>
+ <div>
+<label>choose quantity:</label>
+ <select id="qty" name="value">
+     <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+ </select>
+ <input class="btn1" type="submit" value="Update" onclick="update()">
+ </div>
+<script>
+
+    function removecart(){
+    var a=localStorage.getItem('userid');
+    var b=localStorage.getItem('ritemid');
+     $.ajax({url:"http://localhost:8000/cart",
+               data:{user_id:a,item_id:b},
+               type:'DELETE',
+               success:function(data){
+                alert(data);
+                }
+    });
+    }
+    function update(){
+    var a=localStorage.getItem('userid');
+    var b=localStorage.getItem('ritemid');
+    var q=document.getElementById('qty').value;
+    $.ajax({url:"http://localhost:8000/cart",
+               data:{user_id:a,item_id:b,quantity:q},
+               type:'PUT',
+               success:function(data){
+                alert(data);
+                }
+    });
+    }
+
+
+</script>
+</body>
+</html>

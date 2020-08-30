@@ -1,0 +1,32 @@
+header{
+     display:block;
+     height: 60px;
+     background-color:black;
+     }
+nav {
+     font-size: 20px;
+     float: right;
+     }
+nav a{
+    padding:10Px;
+    background-color:red;
+    color: black;
+    }
+body{
+    margin:0;
+    padding:0;
+    background-color:red;
+   }
+
+#item{
+    position:relative;
+    left:30%;
+    bottom:170px;
+    font-size:30px;
+}
+#pitem{
+ position:relative;
+    left:50%;
+    bottom:280px;
+    font-size:30px;
+}

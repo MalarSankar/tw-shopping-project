@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/additem.css')}}">
+</head>
+<body>
+ <header>
+        <nav>
+
+            <a href="http://localhost:8000/cart1">cart</a>
+             <a href="http://localhost:8000/">logout</a>
+
+        </nav>
+    </header>
+
+ <ul id="pitem" style="font-size:30px;"></ul>
+ <button  class="btn" type="button" onclick="addcart()" >Add to Cart</button>
+<script>
+a=localStorage.getItem('itemid')
+ fetch("http://localhost:8000/item/"+a)
+                .then(response => response.json())
+                .then(json =>{
+                    let ul='<ul>';
+                    json.forEach(pitem =>{
+                        ul+='<br><li id="'+pitem.id+'">'+"price:"+pitem.price+" , "+"Sellername:"+pitem.sellername+" , "+"seller_no:"+pitem.seller_no+'</a>';
+                    });
+                    document.getElementById("pitem").innerHTML=ul;
+                });
+    function addcart(){
+    var a=localStorage.getItem('userid');
+    var b=localStorage.getItem('itemid');
+     $.ajax({url:"http://localhost:8000/acart",
+               data:{user_id:a,item_id:b},
+               type:'POST',
+               success:function(data){
+               alert(data);
+
+               }
+
+
+        });
+    }
+
+</script>
+</body>
+</html>
