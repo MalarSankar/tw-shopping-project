@@ -33,28 +33,34 @@
  <input class="btn1" type="submit" value="Update" onclick="update()">
  </div>
 <script>
-
+    var token=localStorage.getItem("token");
     function removecart(){
     var a=localStorage.getItem('userid');
     var b=localStorage.getItem('ritemid');
-     $.ajax({url:"http://localhost:8000/cart",
+     $.ajax({url:"http://localhost:8000/cart"+"?token="+token,
                data:{user_id:a,item_id:b},
                type:'DELETE',
                success:function(data){
                 alert(data);
-                }
+                },
+               error:function(error){
+                alert(error);
+            }
     });
     }
     function update(){
     var a=localStorage.getItem('userid');
     var b=localStorage.getItem('ritemid');
     var q=document.getElementById('qty').value;
-    $.ajax({url:"http://localhost:8000/cart",
+    $.ajax({url:"http://localhost:8000/cart"+"?token="+token,
                data:{user_id:a,item_id:b,quantity:q},
                type:'PUT',
                success:function(data){
                 alert(data);
-                }
+                },
+               error:function(error){
+                alert(error);
+            }
     });
     }
 

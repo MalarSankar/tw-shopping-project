@@ -23,9 +23,10 @@
 </div>
 <div id="pitem"></div>
 <script>
-    localStorage.setItem("userid",{{a}})
-
-    fetch("http://localhost:8000/categories")
+    localStorage.setItem("userid",{{a}});
+    localStorage.setItem("token",'{{encode_token}}');
+    var token=localStorage.getItem("token");
+    fetch("http://localhost:8000/categories"+"?token="+token)
         .then(response => response.json())
         .then(json =>{
             let ul='<ul>';
@@ -36,7 +37,7 @@
             document.getElementById("cat").innerHTML=ul;
         });
         document.getElementsByTagName('ul')[0].addEventListener("click",function(ev){
-            fetch("http://localhost:8000/categories/"+ev.target.id)
+            fetch("http://localhost:8000/categories/"+ev.target.id+"?token="+token)
                 .then(response => response.json())
                 .then(json =>{
                     let ol='<ol>';
@@ -47,7 +48,7 @@
                     document.getElementById("item").innerHTML=ol;
                 });
                  document.getElementsByTagName('ol')[0].addEventListener("click",function(ev){
-                   fetch("http://localhost:8000/item/"+ev.target.id)
+                   fetch("http://localhost:8000/item/"+ev.target.id+"?token="+token)
                 .then(response => response.json())
                 .then(json =>{
                     let ul='<ul>';

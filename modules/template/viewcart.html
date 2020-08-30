@@ -15,13 +15,13 @@
         </nav>
     </header>
 
-    <ul id="cart"></ul>
-    <ol id="car"></ol>
+    <ul id="cart" style="font-size:20px;"></ul>
+
 <script>
 var user=localStorage.getItem('userid');
+var token=localStorage.getItem("token");
    $(document).ready(function(){
-
-        $.ajax({url:"http://localhost:8000/cart",
+        $.ajax({url:"http://localhost:8000/cart"+"?token="+token,
                data:{user_id:user},
                type:'POST',
                success:function(data){

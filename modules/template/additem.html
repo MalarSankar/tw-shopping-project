@@ -19,8 +19,9 @@
  <ul id="pitem" style="font-size:30px;"></ul>
  <button  class="btn" type="button" onclick="addcart()" >Add to Cart</button>
 <script>
+var token=localStorage.getItem("token");
 a=localStorage.getItem('itemid')
- fetch("http://localhost:8000/item/"+a)
+ fetch("http://localhost:8000/item/"+a+"?token="+token)
                 .then(response => response.json())
                 .then(json =>{
                     let ul='<ul>';
@@ -32,17 +33,17 @@ a=localStorage.getItem('itemid')
     function addcart(){
     var a=localStorage.getItem('userid');
     var b=localStorage.getItem('itemid');
-     $.ajax({url:"http://localhost:8000/acart",
+     $.ajax({url:"http://localhost:8000/addcart"+"?token="+token,
                data:{user_id:a,item_id:b},
                type:'POST',
                success:function(data){
                alert(data);
-
-               }
-
-
-        });
-    }
+                },
+                 error:function(error){
+                alert(error);
+                 }
+               });
+            }
 
 </script>
 </body>

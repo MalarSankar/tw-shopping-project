@@ -2,11 +2,13 @@ from database import connect_db
 from flask import Flask,request,jsonify,session,render_template
 from flask import Blueprint
 from models import Cart,Item
+from login import token_required
 session=connect_db()
 
 cart_blueprint=Blueprint('cart_blueprint',__name__)
 
-@cart_blueprint.route('/acart',methods=['POST'])
+@cart_blueprint.route('/addcart',methods=['POST'])
+@token_required
 def add_cart():
     user_id=request.form['user_id']
     item_id=request.form['item_id']
@@ -20,6 +22,7 @@ def add_cart():
 
 
 @cart_blueprint.route('/cart',methods=['PUT'])
+@token_required
 def modify_quantity():
     user_id = request.form['user_id']
     item_id = request.form['item_id']
@@ -37,6 +40,7 @@ def modify():
     return render_template('modifycart.html'),200
 
 @cart_blueprint.route('/cart',methods=['DELETE'])
+@token_required
 def delete_item():
     user_id = request.form['user_id']
     item_id = request.form['item_id']
@@ -57,8 +61,8 @@ def cart():
     return render_template('viewcart.html'),200
 
 @cart_blueprint.route('/cart',methods=['POST'])
+@token_required
 def fetch_cart_items():
-    item=[]
     user_id = request.form['user_id']
     try:
         cart_items=session.query(Item.id,Item.name,Cart.quantity).filter(Cart.item_id==Item.id).filter(Cart.user_id==user_id).all()

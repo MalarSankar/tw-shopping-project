@@ -47,7 +47,7 @@ def login():
             a=user_info[0]
             token = jwt.encode({'user': user_name, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=5)},os.environ.get('SECRET_KEY'))
             encode_token=token.decode('UTF-8')
-            return render_template('category.html',a=a)
+            return render_template('category.html',a=a,encode_token=encode_token),200
         return render_template('login.html'),401
     except Exception as e:
         return (str(e))
